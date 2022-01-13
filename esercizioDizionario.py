@@ -20,7 +20,6 @@
 # name = "Vincenzo"
 
 # print(f"{name} : {rubrica[name]}")
-numero_input=0
 rubrica={
     "Mario":3338383838,
 }
@@ -39,6 +38,7 @@ while (True):
         numero_input=int(input("Inserisci il numero della persona "))
         print()
         rubrica[nome_input]=numero_input
+        print(rubrica)
     elif menu == 3:
         exit()
     else: 
