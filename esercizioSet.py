@@ -3,7 +3,7 @@ import requests
 
 risultato=requests.get(url="https://jsonplaceholder.typicode.com/todos")
 todos=risultato.json()
-parole = set()
+parole = set()  
 for n in todos:
     titolo=n["title"]
     par=titolo.split(" ")

@@ -14,7 +14,7 @@ for n in todos:
         else:
             parole_diz[parola]=1
 item_dizionario=parole_diz.items()
-lista_valori_dizionario =list(item_dizionario)
+lista_valori_dizionario =list(item_dizionario)  
 def get_valore (elem):
     return elem[1]
     # return elem.get()

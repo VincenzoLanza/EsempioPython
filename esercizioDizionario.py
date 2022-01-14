@@ -20,26 +20,44 @@
 # name = "Vincenzo"
 
 # print(f"{name} : {rubrica[name]}")
-rubrica={
-    "Mario":3338383838,
-}
-while (True):
+import json
+file_json=open("Rubrica.json", "r")
+loaded_rubrica=json.load(file_json)
+exit=False
+while (exit==False):
     menu=int(input("Scegli 1 per cercare una persona \n 2 per aggiungere una persona \n 3 per uscire : "))  
-    # while (menu == 1 or menu == 2 or menu == 3):
+    #while (menu == 1 or menu == 2 or menu == 3):
     if menu == 1:
         cerca_persona=input("Chi stai cercando? ")
-        print()
-        if  cerca_persona in rubrica:      
-            print(rubrica[cerca_persona])
-        else: 
+        if cerca_persona in loaded_rubrica:
+            nome=loaded_rubrica[cerca_persona]["nome"]
+            cognome=loaded_rubrica[cerca_persona]["cognome"]
+            numero_tel=loaded_rubrica[cerca_persona]["num_tel"]
+            indirizzo=loaded_rubrica[cerca_persona]["indirizzo"]         
+            print()
+            print(f"Nome: {nome}, Cognome: {cognome}, Numero: {numero_tel}, Indirizzo: {indirizzo}")
+        else:
+            print()
             print("persona non registrata alla rubrica \n")
     elif menu == 2:
+        diz_interno={}
+        diz_interno_2={}
         nome_input=input("Inserisci il nome della persona ")
+        cognome_input=input("Inserisci il cognome della persona ")
         numero_input=int(input("Inserisci il numero della persona "))
+        
+        indirizzo_input=int(input)("Inserisci l'indirizzo della persona ")
         print()
-        rubrica[nome_input]=numero_input
-        print(rubrica)
+        diz_interno["nome"]=nome_input
+        diz_interno["cognome"]=cognome_input
+        diz_interno["num_tel"]=numero_input
+        diz_interno["indirizzo"]=indirizzo_input
+        loaded_rubrica[nome_input]=diz_interno
+        print(loaded_rubrica)
     elif menu == 3:
-        exit()
+        exit=True
     else: 
         print("opzione sbagliata riscegli")
+
+with open("Rubrica.json", "w") as jsonFile:
+    data = json.dump(loaded_rubrica,jsonFile)
